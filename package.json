@@ -8,8 +8,11 @@
     "body-parser": "~1.5.2",
     "express": "~4.7.2",
     "method-override": "~2.1.2",
+    "express-validator": "^2.20.8",
+    "dotenv": "^2.0.0",
     "mongodb": "^2.2.22",
     "mongoose": "~4.8.1",
+    "bluebird": "^2.9.2",
     "morgan": "~1.2.2"
   },
   "devDependencies": {
