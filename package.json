@@ -1,0 +1,34 @@
+{
+  "name": "save_my_contacts",
+  "version": "0.0.0",
+  "description": "Simple contact manager.",
+  "main": "server.js",
+  "author": "luucasAlbuq",
+  "dependencies": {
+    "body-parser": "~1.5.2",
+    "express": "~4.7.2",
+    "method-override": "~2.1.2",
+    "express-validator": "^2.20.8",
+    "dotenv": "^2.0.0",
+    "mongodb": "^2.2.22",
+    "mongoose": "~4.8.1",
+    "bluebird": "^2.9.2",
+    "morgan": "~1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luucasAlbuq/saveMyContacts.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luucasAlbuq/saveMyContacts/issues"
+  },
+  "homepage": "https://github.com/luucasAlbuq/saveMyContacts#readme"
+}
