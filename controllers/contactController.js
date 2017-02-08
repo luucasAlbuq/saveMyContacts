@@ -11,11 +11,11 @@ module.exports = {
 }
 
 /***************************************************************************
- * Conviniente methods
- * > Contact.find()
- * > Contact.findOne()
- * > Contact.save() : to save and update a Object.
- * > Contact.remove()
+* Conviniente methods
+* > Contact.find()
+* > Contact.findOne()
+* > Contact.save() : to save and update a Object.
+* > Contact.remove()
 /***************************************************************************/
 
 function findAllContact(request, response){
@@ -84,8 +84,10 @@ function updateContact(request, response){
   );
 }
 
+//FIXME not working
 function deleteContact(request, response){
   var contact_id = request.params.contact_id;
+  console.log("*****",contact_id)
   Contact.findByIdAndRemove(contact_id, function(error, data){
     if(error){
       response.status(500).send(error);

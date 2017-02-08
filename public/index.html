@@ -1,5 +1,83 @@
-<html>
-  <bady>
-    Hello!
-  </bady>
-</html>
+<!doctype html>
+<html ng-app="saveMyContactsApp">
+<head>
+  <!-- META -->
+  <meta charset="utf-8">
+  <!-- Optimize mobile viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--SCRIPTS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-route.min.js"></script>
+
+  <!-- Import our js files -->
+  <script src="js/app.js"></script>
+  <script src="js/contactService.js"></script>
+  <script src="js/contactCtrlr.js"></script>
+
+  <!-- SCROLLS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+
+  <title> Save My Contacts </title>
+
+</head>
+
+<body ng-controller="contactController" ng-init="findAllContact()">
+  <div class="container">
+
+    <!-- CABEÇALHO E TOTAL DE CONTATOS -->
+    <div class="jumbotron text-center">
+      <h1> Contact List <span class="label label-info">{{ allContacts.length }}</span></h1>
+    </div>
+
+    <!-- LISTA NOSSOS CONTATOS -->
+    <div id="contact-list">
+      <table class="table table-striped">
+
+        <tr>
+          <th>Name</th>
+          <th>E-mail</th>
+          <th>Fone</th>
+          <th>Opções</th>
+        </tr>
+
+        <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+        <tr ng-repeat="contact in allContacts" ng-click="findOneContact(contact._id)">
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.fone }}</td>
+          <td>
+            <button type="button" class="btn btn-default" ng-click="">Editar</button>
+            <button type="button" class="btn btn-primary" ng-click="deleteContact(contact._id)">Remover</button>
+          </td>
+        </tr>
+      </table>
+
+      <!-- FORMULÁRIO PARA CRIARMOS UM NOVO CONTATO -->
+      <div id="contato-form">
+        <hr>
+        <form>
+          <div class="form-group col-md-3">
+            <label for="nomeContato">Nome</label>
+            <input type="text" class="form-control" id="nomeContato" placeholder="Nome Sobrenome" ng-model="formContato.nome">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="emailContato">E-mail</label>
+            <input type="text" class="form-control" id="emailContato" placeholder="exemplo@exemplo.com" ng-model="formContato.email">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="telefoneContato">Telefone</label>
+            <input type="text" class="form-control" id="telefoneContato" placeholder="(00) 0000-0000" ng-model="formContato.telefone">
+          </div>
+          <div class="form-group col-md-3">
+            <!-- createToDo() WILL CREATE NEW TODOS -->
+            <button type="submit" class="btn btn-primary" ng-click="">Criar</button>
+            <button type="submit" class="btn btn-info" ng-click="">Atualizar</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    </html>
