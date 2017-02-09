@@ -4,10 +4,10 @@ var saveMyContactsApp = angular.module('saveMyContactsApp',[]);
 
 /*Creating a controller
  * ATTENTION: the array values must to be the same of the saveMyContactsApp */
-saveMyContactsApp.controller('contactController',['$scope','$http', function($scope, $http){
+saveMyContactsApp.controller('contactController',['$scope', '$http', function($scope, $http){
 
   $scope.allContacts = [];
-  $scope.contact = [];
+  $scope.contact = {};
 
   $scope.findAllContact = function(){
     $http.get('/contact').then(function(data){
@@ -15,7 +15,6 @@ saveMyContactsApp.controller('contactController',['$scope','$http', function($sc
     }).catch(function(error){
       console.log(error);
     });
-    //contactService.findAllContact();
   }
 
   $scope.findOneContact = function(id){
@@ -27,9 +26,18 @@ saveMyContactsApp.controller('contactController',['$scope','$http', function($sc
   }
 
   $scope.deleteContact = function(id){
-    $http.delete('/delete/'+id).then(function(data){
+    $http.delete('/contact/delete/'+id).then(function(data){
       //update the contact list
-      findAllContact();
+      $scope.findAllContact();
+    }).catch(function(error){
+      console.log(error);
+    });
+  }
+
+  $scope.createContact = function(contact){
+    $http.post('/contact/create',contact).then(function(data){
+      //update the contact list
+      $scope.findAllContact();
     }).catch(function(error){
       console.log(error);
     });

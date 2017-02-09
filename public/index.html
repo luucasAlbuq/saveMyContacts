@@ -59,20 +59,20 @@
         <hr>
         <form>
           <div class="form-group col-md-3">
-            <label for="nomeContato">Nome</label>
-            <input type="text" class="form-control" id="nomeContato" placeholder="Nome Sobrenome" ng-model="formContato.nome">
+            <label for="nameContato">Nome</label>
+            <input type="text" class="form-control" id="nameContato" placeholder="Nome Sobrename" ng-model="formContact.name">
           </div>
           <div class="form-group col-md-3">
             <label for="emailContato">E-mail</label>
-            <input type="text" class="form-control" id="emailContato" placeholder="exemplo@exemplo.com" ng-model="formContato.email">
+            <input type="text" class="form-control" id="emailContato" placeholder="exemplo@exemplo.com" ng-model="formContact.email">
           </div>
           <div class="form-group col-md-3">
-            <label for="telefoneContato">Telefone</label>
-            <input type="text" class="form-control" id="telefoneContato" placeholder="(00) 0000-0000" ng-model="formContato.telefone">
+            <label for="foneContato">Telefone</label>
+            <input type="text" class="form-control" id="foneContato" placeholder="(00) 0000-0000" ng-model="formContact.fone">
           </div>
           <div class="form-group col-md-3">
             <!-- createToDo() WILL CREATE NEW TODOS -->
-            <button type="submit" class="btn btn-primary" ng-click="">Criar</button>
+            <button type="submit" class="btn btn-primary" ng-click="createContact(formContact)">Criar</button>
             <button type="submit" class="btn btn-info" ng-click="">Atualizar</button>
           </div>
         </form>
