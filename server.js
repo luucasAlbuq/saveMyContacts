@@ -60,5 +60,5 @@ function startApp(){
 
 /*setUp API for AngularJS*/
 app.get('*',function(request, response){
-  response.send('./public/index.html');
+  response.send('/public/index.html');
 });

@@ -8,13 +8,15 @@
 
   <!--SCRIPTS -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-  <script src="lib/angular.min.js"></script>
-  <script src="lib/angular-route.min.js"></script>
+  <script src="lib/angular.js"></script>
+  <script src="lib/angular-route.js"></script>
+  <script src="lib/angular-resource.js"></script>
+  <script type="text/javascript" src="node_modules/angular-ui-mask/dist/mask.js"></script>
 
   <!-- Import our js files -->
   <script src="js/app.js"></script>
   <script src="js/contactService.js"></script>
-  <script src="js/contactCtrlr.js"></script>
+  <script src="js/contactCtrl.js"></script>
 
   <!-- SCROLLS -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
@@ -23,7 +25,7 @@
 
 </head>
 
-<body ng-controller="contactController" ng-init="findAllContact()">
+<body ng-controller="contactCtrl" ng-init="findAllContact()">
   <div class="container">
 
     <!-- CABEÇALHO E TOTAL DE CONTATOS -->
@@ -48,7 +50,7 @@
           <td>{{ contact.email }}</td>
           <td>{{ contact.fone }}</td>
           <td>
-            <button type="button" class="btn btn-default" ng-click="">Editar</button>
+            <button type="button" class="btn btn-default" ng-click="setUpUpdate(contact)">Editar</button>
             <button type="button" class="btn btn-primary" ng-click="deleteContact(contact._id)">Remover</button>
           </td>
         </tr>
@@ -64,16 +66,15 @@
           </div>
           <div class="form-group col-md-3">
             <label for="emailContato">E-mail</label>
-            <input type="text" class="form-control" id="emailContato" placeholder="exemplo@exemplo.com" ng-model="formContact.email">
+            <input type="email" class="form-control" id="emailContato" placeholder="exemplo@exemplo.com" ng-model="formContact.email">
           </div>
           <div class="form-group col-md-3">
             <label for="foneContato">Telefone</label>
-            <input type="text" class="form-control" id="foneContato" placeholder="(00) 0000-0000" ng-model="formContact.fone">
+            <input type="text" class="form-control" id="foneContato" ui-mask="(99) 9999-9999" placeholder="(00) 0000-0000" ng-model="formContact.fone">
           </div>
           <div class="form-group col-md-3">
-            <!-- createToDo() WILL CREATE NEW TODOS -->
             <button type="submit" class="btn btn-primary" ng-click="createContact(formContact)">Criar</button>
-            <button type="submit" class="btn btn-info" ng-click="">Atualizar</button>
+            <button type="submit" class="btn btn-info" ng-click="updateContact(formContact)">Atualizar</button>
           </div>
         </form>
       </div>

@@ -1,1 +1,1 @@
-angular.module('saveMyContactsApp',['ui.mask','ngRoute']);
+angular.module('saveMyContactsApp',[ 'ui.mask','ngRoute','ngResource']);
