@@ -5,6 +5,8 @@ module.exports = router;
 
 router.get('/', contactController.findAllContact);
 
+router.get('/name', contactController.findByNameContact);
+
 router.get('/:contact_id', contactController.findOneContact);
 
 router.post('/create', contactController.createContact);
