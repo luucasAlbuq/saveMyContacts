@@ -2,7 +2,7 @@
 /*Ecripty the database user and pass*/
 require('dotenv').config();
 /*The port comes from the .env file, the default value is 3000*/
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 /*Let's use it to implement the rest services*/
 const express = require('express');
@@ -53,8 +53,8 @@ app.use('/contact',contactRoutes);
 
 /* Startup the application on port 3000*/
 function startApp(){
-  app.listen(3000, function() {
-    console.log('listening on 3000')
+  app.listen(port, function() {
+    console.log('listening on '+port);
   });
 }
 
