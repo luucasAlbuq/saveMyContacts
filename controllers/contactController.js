@@ -12,11 +12,11 @@ module.exports = {
 }
 
 /***************************************************************************
- * Basic methods
- * > Contact.find()
- * > Contact.findOne()
- * > Contact.save() : to save and update a Object.
- * > Contact.remove()
+* Conviniente methods
+* > Contact.find()
+* > Contact.findOne()
+* > Contact.save() : to save and update a Object.
+* > Contact.remove()
 /***************************************************************************/
 
 function findAllContact(request, response){
@@ -24,8 +24,9 @@ function findAllContact(request, response){
     if(error || data === null){
       response.status(404);
       response.send('Contacts not found!');
+    }else{
+      response.json(data);
     }
-    response.json(data);
   });
 }
 
@@ -35,8 +36,9 @@ function findOneContact(request, response){
     if(error || data === null){
       response.status(404).send(error);
       console.log(error);
+    }else{
+      response.json(data);
     }
-    response.json(data);
   });
 }
 
@@ -100,20 +102,20 @@ function updateContact(request, response){
   );
 }
 
+//FIXME not working
 function deleteContact(request, response){
   var contact_id = request.params.contact_id;
-  Contact.findByIdAndRemove(contact_id, function(error, data){
+  Contact.remove({_id:contact_id}, function(error, data){
     if(error){
       response.status(500).send(error);
       console.log(error);
     }
-
     if(data === null){
       response.status(404);
     }else{
+      //TODO returns the data updateed from the database
       response.status(200);
     }
-
     response.send();
   });
 }
