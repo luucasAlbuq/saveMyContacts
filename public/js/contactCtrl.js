@@ -49,6 +49,7 @@ function($scope, $http, $window){
     $http.post('/contact/create',contact).then(function(data){
       //update the contact list
       $scope.findAllContact();
+      $scope.formContact = {};
     }).catch(function(error){
       console.log(error);
     });
