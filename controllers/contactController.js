@@ -5,6 +5,7 @@ const Contact = require('../models/Contact');
 module.exports = {
   findAllContact: findAllContact,
   findOneContact: findOneContact,
+  findByNameContact: findByNameContact,
   createContact: createContact,
   updateContact: updateContact,
   deleteContact: deleteContact
@@ -19,7 +20,7 @@ module.exports = {
 /***************************************************************************/
 
 function findAllContact(request, response){
-  Contact.find({},function(error,data){
+  Contact.find({}).sort().limit(100).exec(function(error, data){
     if(error || data === null){
       response.status(404);
       response.send('Contacts not found!');
@@ -38,6 +39,21 @@ function findOneContact(request, response){
     }else{
       response.json(data);
     }
+  });
+}
+
+function findByNameContact(request, response){
+  var nameQuery = request.query.name;
+  /* When we use find({name:{ $regex: ".*Lucas.*"} }), we are searching for *
+   * contacts the has 'Lucas' in the name, in any part.
+   * The query will returns results like: Lucas Alb, Andre Lucas, Almeida Lucas.
+   */
+  Contact.find({name:{ $regex: '.*'+nameQuery+'.*'}},function(error,data){
+    if(error || data === null){
+      response.status(404);
+      response.send('Contacts not found!');
+    }
+    response.json(data);
   });
 }
 
@@ -77,7 +93,7 @@ function updateContact(request, response){
       if(data === null){
         response.status(404);
       }else{
-        //TODO returns the data updateed from the database
+        //TODO returns the data updated from the database
         response.status(200);
       }
 
