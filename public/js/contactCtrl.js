@@ -4,12 +4,21 @@ var saveMyContactsApp = angular.module('saveMyContactsApp');
 
 /*Creating a controller
  * ATTENTION: the array values must to be the same of the saveMyContactsApp */
-saveMyContactsApp.controller('contactCtrl',['$scope', '$http',
-function($scope, $http){
+saveMyContactsApp.controller('contactCtrl',['$scope', '$http','$window',
+function($scope, $http, $window){
 
   $scope.allContacts = [];
   $scope.contact = {};
   $scope.formContact = {};
+
+  $scope.login = function(user, password) {
+    console.log(">>>>>")
+    if(user == 'luucasAlbuq' && password == 'lucas123'){
+      $window.location.href = '/main.html';
+    }else{
+      alert('Login incorrect');
+    }
+  }
 
   $scope.findAllContact = function(){
     $http.get('/contact').then(function(data){
